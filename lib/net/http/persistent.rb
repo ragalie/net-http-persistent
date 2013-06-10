@@ -1014,12 +1014,7 @@ class Net::HTTP::Persistent
   # Finishes the +connection+.
 
   def request_failed exception, req, connection # :nodoc:
-    due_to = "(due to #{exception.message} - #{exception.class})"
-    message = error_message connection
-
-    finish connection
-
-    raise Error, "too many connection resets #{due_to} #{message}"
+    raise exception
   end
 
   ##
